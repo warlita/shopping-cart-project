@@ -1,23 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
 
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.min.js"
-      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-      crossorigin="anonymous"></script>
-    <script src="js/application.js"></script>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/custom.css" rel="stylesheet">
-  </head>
-  <body>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="js/application.js"></script>
 
-  </body>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/custom.css" rel="stylesheet">
+</head>
+
+<body>
+  <section>
+    <div>
+      <h1>Simple Shopping Cart</h1>
+    </div>
+  </section>
+
+  <section>
+    <table class="table table-responsive table-hover">
+      <tr>
+        <th scope="col">Item</th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Item Price</th>
+      </tr>
+      <tr>
+        <td class="items">Frozen Salmon</td>
+        <td class="prices">$13.87</td>
+        <td class="quantity">
+          <input class="quantity" type="number">
+        </td>
+        <td class="totalprice"></td>
+        <td class="deleteItem">
+          <button class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
+      <tr>
+        <td class="items">Cucumber</td>
+        <td class="prices">$0.72</td>
+        <td class="quantity">
+          <input class="quantity" type="number">
+        </td>
+        <td class="totalprice"></td>
+        <td class="deleteItem">
+          <button class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
+      <tr>
+        <td class="items">5 lbs Rice</td>
+        <td class="prices">$3.34</td>
+        <td class="quantity">
+          <input class="quantity" type="number">
+        </td>
+        <td class="totalprice"></td>
+        <td class="deleteItem">
+          <button class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
+      <tr>
+        <td class="items">Apple</td>
+        <td class="prices">$1.97</td>
+        <td class="quantity">
+          <input class="quantity" type="number">
+        </td>
+        <td class="totalprice"></td>
+        <td class="deleteItem">
+          <button class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
+      <tr>
+        <td class="items">Frozen Fruit</td>
+        <td class="prices">$7.98</td>
+        <td class="quantity">
+          <input class="quantity" type="number">
+        </td>
+        <td class="totalprice"></td>
+        <td class="deleteItem">
+          <button class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
+      <tr>
+        <td class="items">Almond Milk</td>
+        <td class="prices">$2.44</td>
+        <td class="quantity">
+          <input class="quantity" type="number">
+        </td>
+        <td class="totalprice"></td>
+        <td class="deleteItem">
+          <button class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
+      <tr>
+        <td class="items">40.3 oz Medium Roast Coffee</td>
+        <td class="prices">$10.24</td>
+        <td class="quantity">
+          <input class="quantity" type="number">
+        </td>
+        <td class="totalprice"></td>
+        <td class="deleteItem">
+          <button class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
+      <tr>
+        <td class="items">32 fl oz French Vanilla Creamer</td>
+        <td class="prices">$2.68</td>
+        <td class="quantity">
+          <input class="quantity" type="number">
+        </td>
+        <td class="totalprice"></td>
+        <td class="deleteItem">
+          <button class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
+      <tr>
+        <td class="items">250 count No Calorie Sweetener</td>
+        <td class="prices">$3.34</td>
+        <td class="quantity">
+          <input class="quantity" type="number">
+        </td>
+        <td class="totalprice"></td>
+        <td class="deleteItem">
+          <button class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
+    </table>
+  </section>
+
+  <section>
+    <div>
+      <table class="table table-responsive table-hover">
+        <tr>
+          <td class="items">
+            <input class="newItem" type="text" placeholder="Item">
+          </td>
+          <td class="prices">
+            <input class="newPrice" type="price" placeholder="$1.99"> </td>
+          <td class="quantity">
+            <input class="newQuantity" type="number" placeholder="2">
+          </td>
+          <td>
+            <button type="button" class="bi bi-cart" id="addToCart">Add to cart</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <div class="col-3">
+      <h2 id="finalPrice">Total Price: </h2>
+    </div>
+  </section>
+
+
+</body>
+
 </html>

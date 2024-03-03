@@ -64,7 +64,7 @@ var updateItemPrice = function () {
 
   $("tbody tr").each(function (i, ele) {
     var subTotal = calculateSubTotal(this);
-    allItemPrices.push(subTotal || 0);
+    allItemPrices.push(subTotal);
   });
 
   if (allItemPrices.length == 0) {
@@ -73,9 +73,7 @@ var updateItemPrice = function () {
     var totalCart = allItemPrices.reduce(function (acc, x) {
       return acc + x;
     });
-    $("#finalPrice").html(
-      `$${parseFloat(Math.round(totalCart * 100) / 100).toFixed(2)}`
-    );
+    $("#finalPrice").html(totalCart);
   };
 };
 

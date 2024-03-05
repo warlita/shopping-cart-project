@@ -32,57 +32,56 @@ $(document).ready(function () {
   document.querySelector(".newQuantity").value = "";
 })
 
-
-// remove button
 $(document).ready(function () {
-  $("body").on("click", ".deleteItem", function (event) {
-    $(this).closest("tr").remove();
-  })
-});
+  //calculating subtotal
+  var calculateSubTotal = function (ele) {
+    var quantityItem = Number(`${$(ele).find(".quantity").val()}` || `${$(ele).find(".newQuantity input").val()}`);
+    var priceItem = Number(`${$(ele).children(".prices").text().replace(/[^0-9.]+/g, "")}` || `${$(ele).find(".newPrices input").text().replace(/[^0-9.]+/g, "")}`);
 
-//calculating subtotal
-var calculateSubTotal = function (ele) {
-  var quantityItem = Number(`${$(ele).find(".quantity").val()}` || `${$(ele).find(".newQuantity input").val()}`);
-  var priceItem = Number(`${$(ele).children(".prices").text().replace(/[^0-9.]+/g, "")}` || `${$(ele).find(".newPrices input").text().replace(/[^0-9.]+/g, "")}`);
+    var subTotal = quantityItem * priceItem;
 
-  var subTotal = quantityItem * priceItem;
+    if (subTotal >= 0) {
+      $(ele)
+        .children(".totalprice")
+        .html(`$${parseFloat(Math.round(subTotal * 100) / 100).toFixed(2)}`);
+    }
 
-  if (subTotal >= 0) {
-    $(ele)
-      .children(".totalprice")
-      .html(`$${parseFloat(Math.round(subTotal * 100) / 100).toFixed(2)}`);
-  }
-
-  return subTotal;
-};
-
-//updating Item Price or (subtotal) 
-var total = 0;
-
-var updateItemPrice = function () {
-  var allItemPrices = [];
-
-  $("tbody tr").each(function (i, ele) {
-    var subTotal = calculateSubTotal(this);
-    allItemPrices.push(subTotal);
-  });
-
-  if (allItemPrices.length == 0) {
-    $("#finalPrice").html(`$--.--`);
-  } else {
-    var totalCart = allItemPrices.reduce(function (acc, x) {
-      return acc + x;
-    });
-    $("#finalPrice").html(totalCart);
+    return subTotal;
   };
-};
+
+  //updating Item Price or (subtotal) 
+  var total = 0;
+
+  var updateItemPrice = function () {
+    var allItemPrices = [];
+
+    $("tbody tr").each(function (i, ele) {
+      var subTotal = calculateSubTotal(this);
+      allItemPrices.push(subTotal);
+    });
+
+    if (allItemPrices.length == 0) {
+      $("#finalPrice").html(`$--.--`);
+    } else {
+      var totalCart = allItemPrices.reduce(function (acc, x) {
+        return acc + x;
+      });
+      $("#finalPrice").html(totalCart);
+    };
+  };
 
   //update shopping cart
-  var updateTotalCartPrice;
-  $("body").on("input", "tr input", function () {
-    clearTimeout(updateTotalCartPrice);
-    updateTotalCartPrice = setTimeout(function () {
+  var timeout;
+  $("#item-list").on("change", ".quantity input", function () {
+    console.log('qty input')
+    clearTimeout(timeout);
+    timeout = setTimeout(function () {
       updateItemPrice();
     }, 500);
   });
 
+  // remove button
+  $("body").on("click", ".deleteItem", function (event) {
+    $(this).closest("tr").remove();
+  })
+});
